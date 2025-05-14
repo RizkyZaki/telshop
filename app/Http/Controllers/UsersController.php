@@ -1,64 +1,66 @@
-<?php
-
 namespace App\Http\Controllers;
-
+<?php
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama'     => 'required|string',
+            'email'    => 'required|email|unique:users',
+            'no_telp'  => 'required|string',
+            'username' => 'required|string|unique:users',
+            'lokasi'   => 'required|string',
+        ]);
+
+        User::create($validated);
+        return redirect()->route('users.index')->with('success', 'User berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        return redirect()->route('users.index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('users.edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $validated = $request->validate([
+            'nama'     => 'required|string',
+            'email'    => 'required|email|unique:users,email,' . $user->id,
+            'no_telp'  => 'required|string',
+            'username' => 'required|string|unique:users,username,' . $user->id,
+            'lokasi'   => 'required|string',
+        ]);
+
+        $user->update($validated);
+        return redirect()->route('users.index')->with('success', 'User berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('users.index')->with('success', 'User berhasil dihapus.');
     }
 }
