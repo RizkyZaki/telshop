@@ -38,7 +38,7 @@
                     </li>
                     <li class="nk-menu-item">
                         <a href="{{ url('dashboard/orders') }}" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-clipboard-check"></em></span>
+                            <span class="nk-menu-icon"><em class="icon ni ni-clipboard"></em></span>
                             <span class="nk-menu-text">Pesanan</span>
                         </a>
                     </li>
@@ -65,13 +65,13 @@
                         </a>
                     </li>
                     <li class="nk-menu-item">
-                        <a href="{{ url('dashboard/products') }}" class="nk-menu-link">
+                        <a href="{{ url('dashboard/users') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
                             <span class="nk-menu-text">Pengguna</span>
                         </a>
                     </li>
                     <li class="nk-menu-heading">
-                        <h6 class="overline-title text-primary-alt">Extra</h6>
+                        <h6 class="overline-title text-primary-alt">Situs</h6>
                     </li>
                     <li class="nk-menu-item">
                         <a href="{{ url('dashboard/settings') }}" class="nk-menu-link">

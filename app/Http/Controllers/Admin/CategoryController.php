@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    // NATHAN TASK LENGKAPI CONTROLLERNYA
     /**
      * Display a listing of the resource.
      */

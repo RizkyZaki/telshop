@@ -14,8 +14,8 @@
                     <div class="card">
                         <div class="card-inner">
                             {{-- perbaiki action formnya --}}
-                            <form action="{{ url('dashboard/users') }}" method="POST" enctype="multipart/form-data">
-                                {{-- ELSA TASK --}}
+                            <form action="{{ url('dashboard/products') }}" method="POST" enctype="multipart/form-data">
+                                {{-- BIMO TASK --}}
                                 {{-- Lengkapi Formnya --}}
                                 <button class="btn btn-primary">Simpan</button>
                             </form>

@@ -3,17 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class UserController extends Controller
 {
-    // BIMO TASK LENGKAPI CONTROLLERNYA SESUAIKAN DENGAN FORMNYA
+    // ELSA TASK LENGKAPI CONTROLLERNYA SESUAIKAN DENGAN FORMNYA
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('admin.pages.users.index',[
+            'title' => 'Pengguna',
+            'heading'=> 'Kelola Pengguna',
+            'collection'=> User::latest()->get()
+        ]);
     }
 
     /**
@@ -21,7 +26,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.users.create',[
+            'title' => 'Pengguna',
+            'heading'=> 'Buat Pengguna',
+        ]);
     }
 
     /**

@@ -87,7 +87,7 @@ class AuthController extends Controller
             $user = Auth::user();
 
             if (in_array($user->role, ['admin', 'seller'])) {
-                return redirect('/dashboard')->with('success', 'Selamat datang di dashboard!');
+                return redirect('/dashboard/overview')->with('success', 'Selamat datang di dashboard!');
             } else {
                 return redirect('/')->with('success', 'Berhasil login!');
             }
