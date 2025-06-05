@@ -4,63 +4,85 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    // BIMO TASK LENGKAPI CONTROLLERNYA SESUAIKAN DENGAN FORMNYA
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        return view('pages.products.index', [
+            'title' => 'Produk',
+            'heading' => 'Daftar Semua Produk',
+            'products' => Product::all()
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('pages.products.create', [
+            'title' => 'Tambah Produk',
+            'heading' => 'Form Tambah Produk'
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'stock' => 'required|integer',
+            'image' => 'image|file|max:2048'
+        ]);
+
+        if ($request->file('image')) {
+            $validated['image'] = $request->file('image')->store('product-images');
+        }
+
+        Product::create($validated);
+        return redirect('/dashboard/products')->with('success', 'Produk berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit($id)
     {
-        //
+        return view('pages.products.edit', [
+            'title' => 'Edit Produk',
+            'heading' => 'Form Edit Produk',
+            'product' => Product::findOrFail($id)
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'stock' => 'required|integer',
+            'image' => 'image|file|max:2048'
+        ]);
+
+        if ($request->file('image')) {
+            if ($product->image) {
+                Storage::delete($product->image);
+            }
+            $validated['image'] = $request->file('image')->store('product-images');
+        }
+
+        $product->update($validated);
+        return redirect('/dashboard/products')->with('success', 'Produk berhasil diupdate');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $product = Product::findOrFail($id);
+        if ($product->image) {
+            Storage::delete($product->image);
+        }
+        $product->delete();
+        return redirect('/dashboard/products')->with('success', 'Produk berhasil dihapus');
     }
 }
