@@ -57,7 +57,7 @@
                                 <li class="separator"></li>
                                 <li class="axil-breadcrumb-item"><a href="{{ url('/products') }}">Produk</a></li>
                             </ul>
-                            <h1 class="title">Semua Produk</h1>
+                            <h1 class="title">Hasil Pencarian {{ $title }}</h1>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-4">
@@ -75,15 +75,18 @@
         <div class="axil-product-area bg-color-white axil-section-gap">
             <div class="container">
                 <div class="section-title-wrapper">
-                    <span class="title-highlighter highlighter-primary"> <i class="far fa-shopping-basket"></i>Semua
-                        Produk</span>
-                    <h2 class="title">Semua Produk Terbaru Kami</h2>
+                    <span class="title-highlighter highlighter-primary"> <i class="far fa-shopping-basket"></i>Hasil Pencarian</span>
+                    @if($result->isEmpty())
+                        <h2 class="title">Produk tidak ditemukan</h2>
+                    @else
+                        <h2 class="title">{{ $result->count() }} produk ditemukan</h2>
+                    @endif
                 </div>
                 <div
                     class="explore-product-activation slick-layout-wrapper slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide">
                     <div class="slick-single-layout">
                         <div class="row row--15">
-                            @foreach ($products as $item)
+                            @foreach ($result as $item)
                                 <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
                                     <div class="axil-product product-style-one">
                                         <div class="thumbnail">
@@ -129,7 +132,6 @@
         </div>
     </main>
 
-    <!-- Start Footer Area  -->
     <footer class="axil-footer-area footer-style-2">
         <!-- End Footer Top Area  -->
         <!-- Start Copyright Area  -->

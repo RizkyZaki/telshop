@@ -13,9 +13,9 @@ use App\Http\Controllers\Client\ClientController;
 Route::controller(ClientController::class)->group(function (){
     Route::get('/', 'index');
     Route::get('products', 'products');
-    Route::get('categories', 'category');
-    Route::get('products/{slug}', 'detailProduct');
+    Route::get('product/{slug}', 'detailProduct');
     Route::get('category/{slug}', 'detailCategory');
+    Route::get('search', 'search');
 });
 
 // Logout
@@ -24,7 +24,9 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 // Rute untuk tamu (belum login)
 Route::middleware('guest')->group(function () {
     Route::get('login', [AuthController::class, 'login'])->name('login');
+    Route::get('register', [AuthController::class, 'register']);
     Route::post('login', [AuthController::class, 'authenticated'])->name('authenticated');
+    Route::post('register', [AuthController::class, 'registerStore']);
 });
 
 // Rute untuk user yang sudah login (seller dan admin)

@@ -53,18 +53,17 @@
                     <div class="col-lg-6 col-md-8">
                         <div class="inner">
                             <ul class="axil-breadcrumb">
-                                <li class="axil-breadcrumb-item"><a href="{{ url('/') }}">Beranda</a></li>
+                                <li class="axil-breadcrumb-item"><a href="{{url('/')}}">Beranda</a></li>
                                 <li class="separator"></li>
-                                <li class="axil-breadcrumb-item"><a href="{{ url('/products') }}">Produk</a></li>
+                                <li class="axil-breadcrumb-item"><a href="">{{$category->name}}</a></li>
                             </ul>
-                            <h1 class="title">Semua Produk</h1>
+                            <h1 class="title">Produk {{$category->name}}</h1>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-4">
                         <div class="inner">
                             <div class="bradcrumb-thumb">
-                                <img src="{{ asset('client/images/product/product-45.png') }}" alt="Image">
-
+                                <img src="{{asset('client/images/product/product-45.png')}}" alt="Image">
                             </div>
                         </div>
                     </div>
@@ -75,48 +74,46 @@
         <div class="axil-product-area bg-color-white axil-section-gap">
             <div class="container">
                 <div class="section-title-wrapper">
-                    <span class="title-highlighter highlighter-primary"> <i class="far fa-shopping-basket"></i>Semua
-                        Produk</span>
+                    <span class="title-highlighter highlighter-primary"> <i class="far fa-shopping-basket"></i>Semua Produk</span>
                     <h2 class="title">Semua Produk Terbaru Kami</h2>
                 </div>
                 <div
                     class="explore-product-activation slick-layout-wrapper slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide">
                     <div class="slick-single-layout">
                         <div class="row row--15">
-                            @foreach ($products as $item)
-                                <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
-                                    <div class="axil-product product-style-one">
-                                        <div class="thumbnail">
-                                            <a href="{{ url('product/' . $item->slug) }}">
-                                                <img data-sal="zoom-out" data-sal-delay="200" data-sal-duration="800"
-                                                    loading="lazy" class="main-img"
-                                                    src="{{ asset('storage/' . $item->image) }}" alt="Product Images">
-                                                <img class="hover-img" src="{{ asset('storage/' . $item->image) }}"
-                                                    alt="Product Images">
-                                            </a>
-                                            <div class="product-hover-action">
-                                                <ul class="cart-action">
-                                                    <li class="select-option">
-                                                        <a href="https://wa.me/{{ $item->user->phone }}">
-                                                            Pesan
-                                                        </a>
-                                                    </li>
+                            @foreach ($category->products as $item)
 
-                                                </ul>
-                                            </div>
+                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
+                                <div class="axil-product product-style-one">
+                                    <div class="thumbnail">
+                                        <a href="{{url('product/' . $item->slug)}}">
+                                            <img data-sal="zoom-out" data-sal-delay="200" data-sal-duration="800"
+                                                loading="lazy" class="main-img"
+                                                src="{{asset('storage/'. $item->image)}}" alt="Product Images">
+                                            <img class="hover-img" src="{{asset('storage/'. $item->image)}}"
+                                                alt="Product Images">
+                                        </a>
+                                        <div class="product-hover-action">
+                                            <ul class="cart-action">
+                                                <li class="select-option">
+                                                    <a href="https://wa.me/{{$item->user->phone}}">
+                                                        Pesan
+                                                    </a>
+                                                </li>
+
+                                            </ul>
                                         </div>
-                                        <div class="product-content">
-                                            <div class="inner">
-                                                <h5 class="title"><a
-                                                        href="{{ url('product/' . $item->slug) }}">{{ $item->name }}</a>
-                                                </h5>
-                                                <div class="product-price-variant">
-                                                    <span class="price current-price">{{ formatIDR($item->price) }}</span>
-                                                </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="inner">
+                                            <h5 class="title"><a href="{{url('product/'.$item->slug)}}">{{$item->name}}</a></h5>
+                                            <div class="product-price-variant">
+                                                <span class="price current-price">{{formatIDR($item->price)}}</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             @endforeach
                             <!-- End Single Product  -->
                         </div>
@@ -138,10 +135,10 @@
                 <div class="row align-items-center">
                     <div class="col-xl-4">
                         <div class="social-share">
-                            <a href="{{ appSetting()->fb }}"><i class="fab fa-facebook-f"></i></a>
-                            <a href="{{ appSetting()->ig }}"><i class="fab fa-instagram"></i></a>
-                            <a href="{{ appSetting()->twitter }}"><i class="fab fa-twitter"></i></a>
-                            <a href="{{ appSetting()->yt }}"><i class="fab fa-youtube"></i></a>
+                            <a href="{{appSetting()->fb}}"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{appSetting()->ig}}"><i class="fab fa-instagram"></i></a>
+                            <a href="{{appSetting()->twitter}}"><i class="fab fa-twitter"></i></a>
+                            <a href="{{appSetting()->yt}}"><i class="fab fa-youtube"></i></a>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-12">

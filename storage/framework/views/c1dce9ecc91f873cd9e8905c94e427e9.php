@@ -81,7 +81,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" rows="4"><?php echo e(old('description', $product->description)); ?></textarea>
+unset($__errorArgs, $__bag); ?> summernote" rows="4"><?php echo e(old('description', $product->description)); ?></textarea>
                                 <?php $__errorArgs = ['description'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -202,6 +202,30 @@ unset($__errorArgs, $__bag); ?>
         </div>
     </div>
 </div>
+<?php $__env->startPush('customJs'); ?>
+<script>
+    function texteditor() {
+            $("textarea.summernote").summernote({
+                placeholder: "Deskripsi",
+                tabsize: 2,
+                height: 150,
+                toolbar: [
+                    ["style", ["style"]],
+                    ["font", ["bold", "italic", "underline", "clear"]],
+                    ["font", ["strikethrough", "superscript", "subscript"]],
+                    ["fontname", ["fontname"]],
+                    ["fontsize", ["fontsize"]],
+                    ["color", ["color"]],
+                    ["para", ["ul", "ol", "paragraph"]],
+                    ["height", ["height"]],
+                ],
+            });
+        }
+        $(document).ready(function() {
+            texteditor();
+        });
+</script>
+<?php $__env->stopPush(); ?>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('admin.layout.main', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH D:\School\S4\PAW\telshop\resources\views/admin/pages/products/update.blade.php ENDPATH**/ ?>

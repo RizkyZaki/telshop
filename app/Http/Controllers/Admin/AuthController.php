@@ -28,23 +28,23 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
+            'username' => 'required|unique:users,username',
             'phone' => 'required|string|max:20',
             'address' => 'required|string|max:255',
-            'gender' => 'required|in:male,female',
             'role' => 'required|in:buyer,seller',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:6',
         ], [
             'name.required' => 'Nama wajib diisi.',
             'email.required' => 'Email wajib diisi.',
             'email.email' => 'Format email tidak valid.',
             'email.unique' => 'Email sudah digunakan.',
+            'username.required' => 'Username wajib diisi.',
+            'username.unique' => 'Username sudah digunakan.',
             'phone.required' => 'Nomor HP wajib diisi.',
             'address.required' => 'Alamat wajib diisi.',
-            'gender.required' => 'Jenis kelamin wajib dipilih.',
             'role.required' => 'Role wajib dipilih.',
             'password.required' => 'Password wajib diisi.',
             'password.min' => 'Password minimal 6 karakter.',
-            'password.confirmed' => 'Konfirmasi password tidak sesuai.',
         ]);
 
         if ($validator->fails()) {
@@ -52,11 +52,11 @@ class AuthController extends Controller
         }
 
         User::create([
+            'username' => $request->username,
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
             'address' => $request->address,
-            'gender' => $request->gender,
             'role' => $request->role,
             'password' => Hash::make($request->password),
         ]);

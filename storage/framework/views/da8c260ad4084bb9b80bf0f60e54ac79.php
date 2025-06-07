@@ -23,14 +23,19 @@
                             <ul class="mainmenu">
                                 <li><a href="<?php echo e(url('/')); ?>">Beranda</a></li>
                                 <li><a href="<?php echo e(url('products')); ?>">Semua Produk</a></li>
-                                <li><a href="<?php echo e(url('categories')); ?>">Semua Kategori</a></li>
-                                <?php if(auth()->guard()->guest()): ?>
+                                <li><a href="<?php echo e(url('my-order')); ?>">Pesanan Saya</a></li>
+                                <?php if(auth()->check()): ?>
+                                    <?php if(auth()->user()->role != 'buyer'): ?>
+                                        <li>
+                                            <a href="<?php echo e(url('dashboard')); ?>">Dashboard</a>
+                                        </li>
+                                    <?php else: ?>
+                                        <li>
+                                            <a href="<?php echo e(url('logout')); ?>">Logout</a>
+                                        </li>
+                                    <?php endif; ?>
+                                <?php else: ?>
                                     <li><a href="<?php echo e(url('login')); ?>">Login</a></li>
-                                <?php endif; ?>
-                                <?php if(auth()->guard()->check()): ?>
-                                    <li>
-                                        <a href="<?php echo e(url('login')); ?>">Login</a>
-                                    </li>
                                 <?php endif; ?>
                             </ul>
                         </nav>
@@ -125,7 +130,7 @@
                                         <div class="inner">
                                             <h5 class="title"><a href="<?php echo e(url('products/'.$item->slug)); ?>"><?php echo e($item->name); ?></a></h5>
                                             <div class="product-price-variant">
-                                                <span class="price current-price"><?php echo e($item->price); ?></span>
+                                                <span class="price current-price"><?php echo e(formatIDR($item->price)); ?></span>
                                             </div>
                                         </div>
                                     </div>

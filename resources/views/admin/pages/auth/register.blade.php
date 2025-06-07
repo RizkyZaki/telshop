@@ -23,9 +23,15 @@
         .logo-img-lg {
             max-height: 110px;
         }
-
-        .bg-abstract {
-            background-image: linear-gradient(to right, #08061a calc(60% - 150px), #0e0a29 calc(60% - 150px), #140f3d 60%, #1b1556 60%, #221a69 calc(60% + 150px), #271e7a calc(60% + 150px), #251b80 100%);
+  .bg-abstract {
+            background-image: linear-gradient(to right,
+                    #b71c1c calc(60% - 150px),
+                    #c62828 calc(60% - 150px),
+                    #d32f2f 60%,
+                    #e53935 60%,
+                    #f44336 calc(60% + 150px),
+                    #ef5350 calc(60% + 150px),
+                    #ef5350 calc(60% + 150px));
         }
     </style>
 </head>
@@ -56,8 +62,97 @@
                             </div>
                         </div>
                     </div><!-- .nk-block-head -->
-                    <form method="POST" action="{{ route('authenticated') }}">
-                       {{-- // BIMO TASK // --}}
+                    <form method="POST" action="{{ url('register') }}">
+                       @csrf
+
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" name="email" id="email"
+                                class="form-control form-control-lg @error('email') is-invalid @enderror"
+                                placeholder="Masukkan Email..." value="{{ old('email') }}" required>
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nama Lengkap</label>
+                            <input type="text" name="name" id="name"
+                                class="form-control form-control-lg @error('name') is-invalid @enderror"
+                                placeholder="Masukkan Nama..." value="{{ old('name') }}" required>
+                            @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" name="username" id="username"
+                                class="form-control form-control-lg @error('username') is-invalid @enderror"
+                                placeholder="Masukkan Username..." value="{{ old('username') }}" required>
+                            @error('username')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">No Handphone</label>
+                            <input type="text" name="phone" id="phone"
+                                class="form-control form-control-lg @error('phone') is-invalid @enderror"
+                                placeholder="Masukkan No HP..." value="{{ old('phone') }}" required>
+                            @error('phone')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="form-label">Alamat</label>
+                            <input type="text" name="address" id="address"
+                                class="form-control form-control-lg @error('address') is-invalid @enderror"
+                                placeholder="Masukkan Alamat Anda..." value="{{ old('address') }}" required>
+                            @error('address')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="role" class="form-label">Daftar Sebagai</label>
+                            <select name="role" id="role" class="form-select js-select2 form-control-lg @error('role') is-invalid @enderror" required>
+                                <option value="" disabled {{ old('role') ? '' : 'selected' }}>Pilih</option>
+                                <option value="seller" {{ old('role') == 'seller' ? 'selected' : '' }}>Seller</option>
+                                <option value="buyer" {{ old('role') == 'buyer' ? 'selected' : '' }}>Pengguna Biasa</option>
+                            </select>
+                            @error('role')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="form-label">Kata Sandi</label>
+                            <input type="password" name="password" id="password"
+                                class="form-control form-control-lg @error('password') is-invalid @enderror"
+                                placeholder="Masukkan Kata Sandi..." required>
+                            @error('password')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary">Daftar</button>
                     </form>
 
 

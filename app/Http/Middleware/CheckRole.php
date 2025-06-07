@@ -19,7 +19,7 @@ class CheckRole
     public function handle(Request $request, Closure $next, string $role): Response
     {
         if (!$request->user() || $request->user()->role !== $role) {
-            abort(Response::HTTP_FORBIDDEN, 'Unauthorized action.');
+            return response()->view('errors.404', [], 404);
         }
 
         return $next($request);

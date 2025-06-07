@@ -24,15 +24,20 @@
                             <ul class="mainmenu">
                                 <li><a href="{{ url('/') }}">Beranda</a></li>
                                 <li><a href="{{ url('products') }}">Semua Produk</a></li>
-                                <li><a href="{{ url('categories') }}">Semua Kategori</a></li>
-                                @guest
+                                <li><a href="{{ url('my-order') }}">Pesanan Saya</a></li>
+                                @if (auth()->check())
+                                    @if(auth()->user()->role != 'buyer')
+                                        <li>
+                                            <a href="{{ url('dashboard') }}">Dashboard</a>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <a href="{{ url('logout') }}">Logout</a>
+                                        </li>
+                                    @endif
+                                @else
                                     <li><a href="{{ url('login') }}">Login</a></li>
-                                @endguest
-                                @auth
-                                    <li>
-                                        <a href="{{ url('login') }}">Login</a>
-                                    </li>
-                                @endauth
+                                @endif
                             </ul>
                         </nav>
                     </div>
@@ -126,7 +131,7 @@
                                         <div class="inner">
                                             <h5 class="title"><a href="{{url('products/'.$item->slug)}}">{{$item->name}}</a></h5>
                                             <div class="product-price-variant">
-                                                <span class="price current-price">{{$item->price}}</span>
+                                                <span class="price current-price">{{formatIDR($item->price)}}</span>
                                             </div>
                                         </div>
                                     </div>
