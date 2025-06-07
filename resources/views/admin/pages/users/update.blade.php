@@ -13,46 +13,93 @@
                     </div>
                     <div class="card">
                         <div class="card-inner">
-                            {{-- perbaiki action formnya --}}
-                            <form action="{{ url('dashboard/users') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ url('dashboard/users/' . encrypt_it($user->id)) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
 
-                                {{-- Nama --}}
-                                <div class="form-group">
-                                    <label for="name">Nama Lengkap</label>
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Masukkan nama" required>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Nama Lengkap</label>
+                                            <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                                name="name" id="name" value="{{ old('name', $user->name) }}">
+                                            @error('name')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="username" class="form-label">Username</label>
+                                            <input type="text" class="form-control @error('username') is-invalid @enderror"
+                                                name="username" id="username" value="{{ old('username', $user->username) }}">
+                                            @error('username')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                                name="email" id="email" value="{{ old('email', $user->email) }}">
+                                            @error('email')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="password" class="form-label">Password <small class="text-muted">(Kosongkan jika tidak diubah)</small></label>
+                                            <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                                name="password" id="password">
+                                            @error('password')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="phone" class="form-label">No. Telepon</label>
+                                            <input type="text" class="form-control @error('phone') is-invalid @enderror"
+                                                name="phone" id="phone" value="{{ old('phone', $user->phone) }}">
+                                            @error('phone')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="role" class="form-label">Peran</label>
+                                            <select class="form-select @error('role') is-invalid @enderror" name="role" id="role">
+                                                <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
+                                                <option value="buyer" {{ old('role', $user->role) == 'buyer' ? 'selected' : '' }}>Pembeli</option>
+                                                <option value="seller" {{ old('role', $user->role) == 'seller' ? 'selected' : '' }}>Penjual</option>
+                                            </select>
+                                            @error('role')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label for="address" class="form-label">Alamat</label>
+                                            <textarea class="form-control @error('address') is-invalid @enderror"
+                                                name="address" id="address" rows="3">{{ old('address', $user->address) }}</textarea>
+                                            @error('address')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
 
-                                {{-- Email --}}
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="Masukkan email" required>
-                                </div>
-
-                                {{-- Password --}}
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password" required>
-                                </div>
-
-                                {{-- Role --}}
-                                <div class="form-group">
-                                    <label for="role">Role</label>
-                                    <select name="role" id="role" class="form-control" required>
-                                        <option value="">Pilih Role</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="editor">Editor</option>
-                                        <option value="user">User</option>
-                                    </select>
-                                </div>
-
-                                {{-- Foto --}}
-                                <div class="form-group">
-                                    <label for="photo">Foto Profil</label>
-                                    <input type="file" name="photo" id="photo" class="form-control-file">
-                                </div>
-
-                                <button class="btn btn-primary mt-3">Simpan</button>
+                                <button class="btn btn-primary">Update</button>
                             </form>
                         </div>
                     </div>

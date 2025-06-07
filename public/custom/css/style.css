@@ -3,8 +3,8 @@
 }
 
 .btn-primary {
-    background-color: #4E71FF !important;
-    border-color: #4E71FF !important;
+    background-color: #C61E21 !important;
+    border-color: #C61E21 !important;
 }
 
 .nk-menu-badge {
@@ -13,13 +13,13 @@
 
 .alert-primary {
     color: white;
-    background-color: #4E71FF;
-    border-color: #4E71FF;
+    background-color: #C61E21;
+    border-color: #C61E21;
 }
 
 .btn-primary:hover {
-    background-color: #4E71FF !important;
-    border-color: #4E71FF !important;
+    background-color: #C61E21 !important;
+    border-color: #C61E21 !important;
 }
 
 .btn-primary:focus {
@@ -27,11 +27,11 @@
 }
 
 .link-primary {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 a.link-primary {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 button:focus {
@@ -45,89 +45,89 @@ a.btn-primary:focus {
 }
 
 .form-control:focus {
-    border-color: #4E71FF !important;
+    border-color: #C61E21 !important;
 }
 
 .user-avatar,
 [class^="user-avatar"]:not([class*="-group"]) {
-    background: #4E71FF !important;
+    background: #C61E21 !important;
 }
 
 .is-light .nk-menu-link:hover {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 .is-light .nk-menu-link:hover em {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 .is-light .nk-menu-item.active > .nk-menu-link {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 .is-light .nk-menu-item.active em {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 ul.link-list li:hover a {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 ul.link-list li:hover em {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 ul.link-list-opt li:hover a {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 ul.link-list-opt li:hover em {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 ul.link-list-plain li:hover a {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 ul.link-list-plain li:hover em {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 ul.link-list-plain-opt li:hover a {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 ul.link-list-plain-opt li:hover em {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 ul.link-list-menu li:hover a {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 ul.link-list-menu li:hover em {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 ul.link-list-menu-opt li:hover a {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 ul.link-list-menu-opt li:hover em {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 ul.link-list-menu-plain li:hover a {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 ul.link-list-menu-plain li:hover em {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 ul.link-list-menu-plain-opt li:hover a {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 ul.link-list-menu-plain-opt li:hover em {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 .link-list-menu li.active > a,
 .link-list-menu a.active,
@@ -138,30 +138,30 @@ ul.link-list-menu-plain-opt li:hover em {
 .link-list-menu li.active > a:after,
 .link-list-menu a.active:after,
 .link-list-menu a:hover:after {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 .page-item.active .page-link {
-    background-color: #4E71FF !important;
-    border-color: #4E71FF !important;
+    background-color: #C61E21 !important;
+    border-color: #C61E21 !important;
 }
 
 .nav-tabs .nav-link.active {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 .nav-tabs .nav-link:focus {
-    color: #4E71FF !important;
+    color: #C61E21 !important;
 }
 
 .nav-tabs .nav-link:after {
-    color: #4E71FF !important;
-    background: #4E71FF !important;
+    color: #C61E21 !important;
+    background: #C61E21 !important;
 }
 
 .datepicker table tr td span:hover,
 .datepicker table tr td span.focused {
-    background: #4E71FF !important;
+    background: #C61E21 !important;
 }
 
 .is-light .nk-menu-link:hover,
@@ -170,8 +170,8 @@ ul.link-list-menu-plain-opt li:hover em {
 }
 
 .dark-switch.active:before {
-    background-color: #4E71FF;
-    border-color: #4E71FF;
+    background-color: #C61E21;
+    border-color: #C61E21;
 }
 
 a.fc-col-header-cell-cushion,
@@ -195,7 +195,7 @@ a.fc-daygrid-day-number {
 .datepicker table tr td.today.disabled,
 .datepicker table tr td.today.disabled:hover {
     background-color: #d3e0f0;
-    color: #4E71FF;
+    color: #C61E21;
 }
 
 .datepicker table tr td.today:hover,
@@ -256,16 +256,16 @@ a.fc-daygrid-day-number {
 }
 
 .fc a.fc-event:not([href]) {
-    background: #4E71FF;
-    border: #4E71FF;
+    background: #C61E21;
+    border: #C61E21;
 }
 
 a:hover {
-    color: #4E71FF;
+    color: #C61E21;
 }
 
 a {
-    color: #4E71FF;
+    color: #C61E21;
 }
 
 .link-list-opt a {
@@ -313,12 +313,12 @@ a {
 }
 
 .nk-stepper-nav > *.current .step-item:before {
-    background: #4E71FF;
+    background: #C61E21;
 }
 
 .nk-stepper-nav > * .step-item:before {
     background: #e3ecf6;
-    color: #4E71FF;
+    color: #C61E21;
 }
 
 .text-right {
@@ -346,7 +346,7 @@ a {
 .nk-error-head {
     font-size: 160px;
     font-weight: 700;
-    background: -webkit-linear-gradient(#4E71FF, #4E71FF);
+    background: -webkit-linear-gradient(#C61E21, #C61E21);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: 0.9;
@@ -371,7 +371,7 @@ a {
 }
 
 .progress-bar {
-    background-color: #4E71FF;
+    background-color: #C61E21;
 }
 
 .hr-dashed {
@@ -379,7 +379,7 @@ a {
 }
 
 .pro-control .custom-control-input:checked ~ .custom-control-label {
-    border-color: #4E71FF !important;
+    border-color: #C61E21 !important;
 }
 .dropdown-icon-item {
     display: block;
@@ -590,7 +590,7 @@ h6 {
 .nk-menu-badge {
     color: #ffffff;
     border-radius: 100%;
-    background: #4E71FF;
+    background: #C61E21;
     font-weight: bold;
     font-size: 12px;
     width: 20px;

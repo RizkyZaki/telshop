@@ -7,11 +7,9 @@
             </div>
             <div class="nk-header-brand d-xl-none">
                 <a href="javascript:void(0);" class="logo-link">
-                    <span class="logo-dark logo-img">
-                        <h3><img class="aling-logo-header"
-                                src="{{ asset('storage/assets/site/logo/' . appSetting()->logo) }}">
-                        </h3>
-                    </span>
+                        <img class="logo-small logo-img logo-img-small"
+                    src="{{asset('storage/assets/site/logo/' . appSetting()->logo)}}"
+                    srcset="{{asset('storage/assets/site/logo/' . appSetting()->logo)}}" alt="logo-small">
                 </a>
             </div>
             <div class="nk-header-tools">

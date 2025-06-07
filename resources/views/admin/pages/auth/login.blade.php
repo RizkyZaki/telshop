@@ -25,7 +25,14 @@
         }
 
         .bg-abstract {
-            background-image: linear-gradient(to right, #08061a calc(60% - 150px), #0e0a29 calc(60% - 150px), #140f3d 60%, #1b1556 60%, #221a69 calc(60% + 150px), #271e7a calc(60% + 150px), #251b80 100%);
+            background-image: linear-gradient(to right,
+                    #b71c1c calc(60% - 150px),
+                    #c62828 calc(60% - 150px),
+                    #d32f2f 60%,
+                    #e53935 60%,
+                    #f44336 calc(60% + 150px),
+                    #ef5350 calc(60% + 150px),
+                    #ef5350 calc(60% + 150px));
         }
     </style>
 </head>
@@ -102,8 +109,11 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-dark btn-lg btn-block">Masuk</button>
+                        <button type="submit" class="btn btn-danger btn-lg btn-block">Masuk</button>
                     </form>
+                    <div class="form-note-s2 pt-4">
+                        Belum punya akun? <a href="{{ url('register') }}"><strong>Daftar Sekarang</strong></a>
+                    </div>
 
 
                 </div><!-- .nk-block -->

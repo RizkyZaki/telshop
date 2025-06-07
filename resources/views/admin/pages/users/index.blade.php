@@ -27,6 +27,8 @@
                                 <thead>
                                     <tr class="nk-tb-item nk-tb-head">
                                         <th class="nk-tb-col">Pengguna</th>
+                                        <th class="nk-tb-col tb-col-mb">No Handphone</th>
+                                        <th class="nk-tb-col tb-col-mb">Alamat</th>
                                         <th class="nk-tb-col tb-col-mb">Kelompok Pengguna</th>
                                         <th class="nk-tb-col tb-col-mb">Terdaftar Pada</th>
                                         <th class="nk-tb-col nk-tb-col-tools text-end"></th>
@@ -39,13 +41,19 @@
                                                 <div class="user-card">
                                                     <div class="user-avatar">
                                                         <span>
-                                                            {{ getInitial($item->fullname) }}</span>
+                                                            {{ getInitial($item->name) }}</span>
                                                     </div>
                                                     <div class="user-info">
                                                         <span class="tb-lead">{{ $item->name }} </span>
                                                         <span>{{ $item->email }}</span>
                                                     </div>
                                                 </div>
+                                            </td>
+                                            <td class="nk-tb-col tb-col-mb">
+                                                <span >{{ $item->phone }}</span>
+                                            </td>
+                                            <td class="nk-tb-col tb-col-mb">
+                                                <span >{{ $item->address }}</span>
                                             </td>
                                             @php
                                                 $userRole = $item->role;
@@ -90,24 +98,15 @@
                                                                     class="icon ni ni-more-h"></em></a>
                                                             <div class="dropdown-menu dropdown-menu-end">
                                                                 <ul class="link-list-opt no-bdr">
+                                                                    <li><a href="{{url('dashboard/users/' . encrypt_it($item->id) . '/edit')}}"
+                                                                           ><em
+                                                                                class="icon ni ni-pen"></em><span>Sunting</span></a>
+                                                                    </li>
                                                                     <li><a href="javascript:void(0);"
                                                                             data-url='master/users'
                                                                             data-identity={{ encrypt_it($item->id) }}
                                                                             class="delete"><em
                                                                                 class="icon ni ni-trash"></em><span>Hapus</span></a>
-                                                                    </li>
-                                                                    <li><a href="javascript:void(0);"
-                                                                            data-id={{ encrypt_it($item->id) }}
-                                                                            data-name="{{ $item->name }}"
-                                                                            class="update"><em
-                                                                                class="icon ni ni-pen"></em><span>Update</span></a>
-                                                                    </li>
-                                                                    <li><a href="javascript:void(0);"
-                                                                            data-id={{ encrypt_it($item->id) }}
-                                                                            data-name="{{ $item->name }}"
-                                                                            class="reset-pass"><em
-                                                                                class="icon ni ni-unlock"></em><span>Reset
-                                                                                Kata Sandi</span></a>
                                                                     </li>
                                                                 </ul>
                                                             </div>

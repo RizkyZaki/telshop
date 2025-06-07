@@ -7,10 +7,15 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Client\ClientController;
 
 // Halaman utama (public)
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(ClientController::class)->group(function (){
+    Route::get('/', 'index');
+    Route::get('products', 'products');
+    Route::get('categories', 'category');
+    Route::get('products/{slug}', 'detailProduct');
+    Route::get('category/{slug}', 'detailCategory');
 });
 
 // Logout
@@ -22,22 +27,18 @@ Route::middleware('guest')->group(function () {
     Route::post('login', [AuthController::class, 'authenticated'])->name('authenticated');
 });
 
-// Rute untuk user yang sudah login (dashboard dan admin)
-Route::prefix('dashboard')->middleware('auth')->group(function () {
+// Rute untuk user yang sudah login (seller dan admin)
+Route::prefix('dashboard')->middleware(['auth'])->group(function () {
+    Route::middleware('role:admin,seller')->group(function () {
+        Route::get('overview', [DashboardController::class, 'index'])->name('dashboard.overview');
+        Route::resource('products', ProductController::class);
+    });
+    Route::middleware('role:admin')->group(function (){
+        Route::resource('category', CategoryController::class);
+        Route::get('settings', [SettingsController::class, 'index'])->name('settings');
+        Route::post('settings/site', [SettingsController::class, 'updateSite']);
+        Route::post('settings/contact', [SettingsController::class, 'updateContact']);
+        Route::resource('users', UserController::class);
+    });
 
-    // Halaman utama dashboard
-    Route::get('overview', [DashboardController::class, 'index'])->name('dashboard.overview');
-
-    // Manajemen produk
-    Route::resource('product', ProductController::class);
-
-    // Manajemen kategori
-    Route::resource('category', CategoryController::class);
-
-    // Pengaturan aplikasi
-    Route::get('settings', [SettingsController::class, 'settings'])->name('settings');
-    Route::post('settings', [SettingsController::class, 'store'])->name('settings.store');
-
-    // Manajemen user/admin
-    Route::resource('users', UserController::class);
 });

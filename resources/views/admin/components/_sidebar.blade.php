@@ -1,15 +1,14 @@
 <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
     <div class="nk-sidebar-element nk-sidebar-head">
         <div class="nk-sidebar-brand">
-            <a href="javascript:void(0);" class="logo-link nk-sidebar-logo" style="margin-top: 15px">
-                <span class="logo-dark logo-img">
-                    <img class="aling-logo-small" src="{{ asset('storage/assets/site/logo/' . appSetting()->logo) }}">
-
-                </span>
-                <span class="logo-small logo-img logo-img-small">
-                    <h4><img class="aling-logo-small"
-                            src="{{ asset('storage/assets/site/logo/' . appSetting()->logo) }}"></h4>
-                </span>
+            <a href="javascript:void(0);" class="logo-link nk-sidebar-logo" >
+               <img class="logo-light logo-img" src="{{asset('storage/assets/site/logo/' . appSetting()->logo)}}"
+                    srcset="{{asset('storage/assets/site/logo/' . appSetting()->logo)}}" alt="logo">
+                <img class="logo-dark logo-img" src="{{asset('storage/assets/site/logo/' . appSetting()->logo)}}"
+                    srcset="{{asset('storage/assets/site/logo/' . appSetting()->logo)}}" alt="logo-dark">
+                <img class="logo-small logo-img logo-img-small"
+                    src="{{asset('storage/assets/site/logo/' . appSetting()->logo)}}"
+                    srcset="{{asset('storage/assets/site/logo/' . appSetting()->logo)}}" alt="logo-small">
             </a>
         </div>
         <div class="nk-menu-trigger me-n2">
@@ -53,7 +52,7 @@
                         <h6 class="overline-title text-primary-alt">Master</h6>
                     </li>
                     <li class="nk-menu-item">
-                        <a href="{{ url('dashboard/categories') }}" class="nk-menu-link">
+                        <a href="{{ url('dashboard/category') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-tags"></em></span>
                             <span class="nk-menu-text">Kategori</span>
                         </a>
