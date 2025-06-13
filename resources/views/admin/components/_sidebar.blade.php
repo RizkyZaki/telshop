@@ -32,7 +32,7 @@
                             <span class="nk-menu-text">Ikhtisar</span>
                         </a>
                     </li>
-                    <li class="nk-menu-heading">
+                    {{-- <li class="nk-menu-heading">
                         <h6 class="overline-title text-primary-alt">Aplikasi</h6>
                     </li>
                     <li class="nk-menu-item">
@@ -47,7 +47,7 @@
                             <span class="nk-menu-icon"><em class="icon ni ni-truck"></em></span>
                             <span class="nk-menu-text">Pengiriman</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nk-menu-heading">
                         <h6 class="overline-title text-primary-alt">Master</h6>
                     </li>

@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Client\ClientController;
 
 // Halaman utama (public)
-Route::controller(ClientController::class)->group(function (){
+Route::middleware('log')->controller(ClientController::class)->group(function (){
     Route::get('/', 'index');
     Route::get('products', 'products');
     Route::get('product/{slug}', 'detailProduct');
