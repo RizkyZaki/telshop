@@ -32,22 +32,7 @@
                             <span class="nk-menu-text">Ikhtisar</span>
                         </a>
                     </li>
-                    <li class="nk-menu-heading">
-                        <h6 class="overline-title text-primary-alt">Aplikasi</h6>
-                    </li>
-                    <li class="nk-menu-item">
-                        <a href="<?php echo e(url('dashboard/orders')); ?>" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-clipboard"></em></span>
-                            <span class="nk-menu-text">Pesanan</span>
-                        </a>
-                    </li>
-
-                    <li class="nk-menu-item">
-                        <a href="<?php echo e(url('dashboard/shippings')); ?>" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-truck"></em></span>
-                            <span class="nk-menu-text">Pengiriman</span>
-                        </a>
-                    </li>
+                    
                     <li class="nk-menu-heading">
                         <h6 class="overline-title text-primary-alt">Master</h6>
                     </li>
